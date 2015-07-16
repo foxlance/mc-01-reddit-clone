@@ -13,12 +13,12 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#">Hacker News</a></li>
+					<li><%= link_to "Hacker News Clone", root_path %></li>
 				</ul>
 				<div class="pull-right">
 					<% if user_signed_in? %>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">New Link</a></li>
+						<li><%= link_to 'New Link', new_link_path %></li>
 						<li><a href="#">My Account</a></li>
 						<li><a href="#">Sign Out</a></li>
 					</ul>
@@ -36,7 +36,9 @@
 	<div class="container">
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
-		<%= yield %>
+		<div class="col-md-9 col-md-offset-2 center-bock">
+			<%= yield %>
+		</div>
 	</div>
 
 </body>
