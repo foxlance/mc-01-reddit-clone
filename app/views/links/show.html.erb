@@ -3,6 +3,21 @@
 	<h1><%= link_to @link.title, @link.url, target: "_blank" %></h1>
 	<small>Submitted by <%= @link.user.name%></small>
 </div>
+<div class="btn-group">
+	<a class="btn btn-default btn-sm" href="<%= @link.url %>">Visit Link</a>
+
+	<%= link_to like_link_path(@link), method: :put, class: "btn btn-default btn-sm" do %>
+	<span class="glyphicon glyphicon-chevron-up"></span>
+	Upvote
+	<%= @link.get_upvotes.size %>
+	<% end %>
+
+	<%= link_to unlike_link_path(@link), method: :put, class: 'btn btn-default btn-sm' do %>
+	<span class="glyphicon glyphicon-chevron-down"></span>
+	Downvote
+	<%= @link.get_downvotes.size %>
+	<% end %>
+</div>
 
 <% if current_user == @link.user %>
 	<%= link_to 'Edit', edit_link_path(@link), class: 'btn btn-primary' %>

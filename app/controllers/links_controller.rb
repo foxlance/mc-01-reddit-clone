@@ -51,6 +51,19 @@ class LinksController < ApplicationController
     end
   end
 
+  def like
+    link = Link.find(params[:id])
+    link.liked_by current_user
+    redirect_to :back
+  end
+
+  def unlike
+    link = Link.find(params[:id])
+    link.downvote_from current_user
+    redirect_to :back
+  end
+
+
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
