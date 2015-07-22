@@ -1,14 +1,10 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @link.title %>
-</p>
+<div class="page-header">
+	<h1><%= link_to @link.title, @link.url, target: "_blank" %></h1>
+	<small>Submitted by <%= @link.user.name%></small>
+</div>
 
-<p>
-  <strong>Url:</strong>
-  <%= @link.url %>
-</p>
-
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<% if current_user == @link.user %>
+	<%= link_to 'Edit', edit_link_path(@link), class: 'btn btn-primary' %>
+	<%= link_to 'Delete', @links, method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: 'btn btn-default' %>
+<% end %>
