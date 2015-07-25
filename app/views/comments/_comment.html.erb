@@ -1,0 +1,15 @@
+<%= div_for(comment) do %>
+<div class="comments_wrapper clearfix">
+	<div class="pull-left">
+		<p class="lead"><%= comment.body %></p>
+		<p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.user.name %></small></p>
+	</div>
+
+	<% if comment.user == current_user %>
+	<div class="pull-right">
+		<%= link_to 'Destroy', comment, method: :delete, data: {confirm: 'Are you sure you wish to delete this comment?'}, class: 'btn btn-sm btn-default' %>
+	</div>
+	<% end %>
+</div>
+<br>
+<% end %>

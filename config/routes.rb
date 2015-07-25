@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       put "like",   to:  "links#like"
       put "unlike", to:  "links#unlike"
     end
+    resources :comments
   end
 
   root to: 'links#index'
